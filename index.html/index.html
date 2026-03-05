@@ -7,166 +7,185 @@
     <title>Profile Card</title>
 
 <style>
-     body {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #F3E9DC;
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F3E9DC;
 
-        background: url("leopard.jfif"); 
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-     }
+    background: url("leopard.jfif"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-      .card {
-          width: 500px;
-          border-radius: 25px;
-          border: 2px solid #110702 ;
-          padding: 5px;
-          margin-inline: 10px;
-          background-color: #F3E9DC;
-      
-      }
-      
-      .image-box {
-        width: 130px;
-        height: 130px;
-        border-radius: 20px;
-        border: 1px solid #F3E9DC;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-        font-size: 24px;
-       }
-       
-       .line {
-        border-bottom: 1px solid black;
-        margin: 10px ;
-        padding-bottom: 3px;
-       }
+.card {
+    width: 500px;
+    border-radius: 25px;
+    border: 2px solid #110702;
+    padding: 5px;
+    margin-inline: 10px;
+    background-color: #F3E9DC;
+}
 
-       nav h1{
-        font-size: 20px;
-        letter-spacing: 1px;
-       }
+.image-box {
+    width: 130px;
+    height: 130px;
+    border-radius: 20px;
+    border: 1px solid #F3E9DC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
 
-       .hamburger {
-        display: block;
-        cursor: pointer;
-        width: 30px;
-        height: 20px;
-        position: relative;
-       }
+.line {
+    border-bottom: 1px solid black;
+    margin: 10px;
+    padding-bottom: 3px;
+}
 
-       .hamburger span {
-        background: #f3e9dc;
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        border-radius: 5px;
-        transition: 0.4s;
-       }    
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #F3E9DC (0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: #110702;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 0 10px #110702;
+    z-index: 10;
+}
 
-       .hamburger span:nth-child(1) {
-        top: 0;
-       }
+nav h1{
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 10px;
+}
 
-       .hamburger span:nth-child(2) {
-        top: 9px;
-       }
+.hamburger {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    margin: 20px;
+}
 
-       .hamburger span:nth-child(3){
-        top: 18px;
-       }
+.hamburger span {
+    background: #f3e9dc;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+    transition: 0.4s;
+}
 
-       .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg);
-        top: 9px;
-       }
+.hamburger span:nth-child(1){ top:0; }
+.hamburger span:nth-child(2){ top:9px; }
+.hamburger span:nth-child(3){ top:18px; }
 
-       .hamburger.active span:nth-child(2) {
-        opacity: 0;
-       }
+.hamburger.active span:nth-child(1){
+    transform: rotate(45deg);
+    top: 9px;
+}
 
-       .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg);
-        top: 9px;
-       }
+.hamburger.active span:nth-child(2){
+    opacity: 0;
+}
 
-       .dropdown {
-        display: none;
-        position: absolute;
-        right: 40px;
-        top: 60px;
-        background-color: #F3E9DC;
-        min-width: 150px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 10px #110702(0, 0, 0, 0.2);
-       }
+.hamburger.active span:nth-child(3){
+    transform: rotate(-45deg);
+    top: 9px;
+}
 
-       .dropdown a {
-        display: block;
-        color: #110702;
-        text-decoration: none;
-        padding: 12px 15px;
-        font-weight: bold;
-        transition: background 0.3s;
-       }
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 40px;
+    top: 60px;
+    background-color: #F3E9DC;
+    min-width: 150px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
 
-       .dropdown a:hover {
-        background-color: #F3E9DC;
-       }
+.dropdown a {
+    display: block;
+    color: #110702;
+    text-decoration: none;
+    padding: 12px 15px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
 
-       .dropdown.show {
-        display: block;
-       }
-    
+.dropdown a:hover{
+    background-color: #e5dacb;
+}
+
+.dropdown.show{
+    display:block;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
 </style>
 </head>
 
 <body>
 
-  <nav>
-    <h1> Maria Angela Navalta | Portfolio </h1>
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="dropdown" id="dropdown">
-        <a href="quizzes.html">Quizzes</a>
-        <a href="activities.html">Activities</a>
-        <a href="exams.html">Exams</a>
-    </div>
-  </nav>
+<nav>
+<h1> Maria Angela Navalta | Portfolio </h1>
 
-  <div class="card">
-    <div class="image-box" style="width: 180px; height: 180px; margin: 50px auto; border: 1px solid #F3E9DC; display: flex;justify-content: center; align-items: center;">
-     <image src="GELA.jfif" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px; border: 1px solid black;"> 
-    </div>
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
 
-    <div class="line">Name: Maria Angela P. Navalta</div>
-    <div class="line">Student Number: 251100440</div>
-    <div class="line">Course: Bachelor of Science in Computer Science</div>
-    <div class="line">Section: BSCS 1-B</div>
-    
-    <p style="margin: 0; font-size: 16px; margin-inline: 25\px; margin-bottom: 30px; marigin-top: 20px;">
-         I am a first-year Computer Science student. I enjoy learning new concepts and improving my skills, especially in areas that challenge my creativity and logical thinking. I am dedicated to growing academically and continuously working on becoming better each day.
-         Beyond my studies, I enjoy listening to music and play online games this is the best way to kill my boredom and watching movies. I'm motivated and eager to develop both personally and professionally as I continue my journey in college. 
-         </p>
-    
-    </div>
+<div class="dropdown" id="dropdown">
+<a href="quizzes.html">Quizzes</a>
+<a href="activities.html">Activities</a>
+<a href="exams.html">Exams</a>
+</div>
+</nav>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const hamburger = document.getElementById('dropdown');
+<div class="card">
 
-        hamburger.addEventListener('click', () => )
-    </script>
+<div class="image-box" style="width:180px;height:180px;margin:50px auto;border:1px solid #F3E9DC;display:flex;justify-content:center;align-items:center;">
+<img src="GELA.jfif" style="width:100%;height:100%;object-fit:cover;border-radius:20px;border:1px solid black;">
+</div>
+
+<div class="line">Name: Maria Angela P. Navalta</div>
+<div class="line">Student Number: 251100440</div>
+<div class="line">Course: Bachelor of Science in Computer Science</div>
+<div class="line">Section: BSCS 1-B</div>
+
+<p style="margin:0;font-size:16px;margin-inline:25px;margin-bottom:30px;margin-top:20px;">
+I am a first-year Computer Science student. I enjoy learning new concepts and improving my skills, especially in areas that challenge my creativity and logical thinking. I am dedicated to growing academically and continuously working on becoming better each day. Beyond my studies, I enjoy listening to music and play online games this is the best way to kill my boredom and watching movies. I'm motivated and eager to develop both personally and professionally as I continue my journey in college.
+</p>
+
+</div>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const dropdown = document.getElementById('dropdown');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    dropdown.classList.toggle('show');
+});
+</script>
+
 </body>
 </html>
 
