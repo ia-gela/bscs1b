@@ -83,6 +83,48 @@
         top: 18px;
        }
 
+       .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 9px;
+       }
+
+       .hamburger.active span:nth-child(2) {
+        opacity: 0;
+       }
+
+       .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 9px;
+       }
+
+       .dropdown {
+        display: none;
+        position: absolute;
+        right: 40px;
+        top: 60px;
+        background-color: #F3E9DC;
+        min-width: 150px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px #110702(0, 0, 0, 0.2);
+       }
+
+       .dropdown a {
+        display: block;
+        color: #110702;
+        text-decoration: none;
+        padding: 12px 15px;
+        font-weight: bold;
+        transition: background 0.3s;
+       }
+
+       .dropdown a:hover {
+        background-color: #F3E9DC;
+       }
+
+       .dropdown.show {
+        display: block;
+       }
+    
 </style>
 </head>
 
@@ -127,5 +169,6 @@
     </script>
 </body>
 </html>
+
 
 
