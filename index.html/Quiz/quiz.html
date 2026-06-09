@@ -132,60 +132,179 @@
        text-shadow: 0 0 20px #110702(0, 229, 255, 0.4);
      };
      }
+
+    .upload-container{
+    width:90%;
+    margin:30px auto;
+    display:flex;
+    gap:40px;
+}
+
+.upload-form,
+.uploaded-section{
+    flex:1;
+    border:2px solid #110702;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 0 15px #110702;
+    background:rgba(243,233,220,0.2);
+}
+
+.upload-form h2,
+.uploaded-section h2{
+    text-align:center;
+}
+
+.upload-form label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+.upload-form input{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:2px solid #110702;
+    box-sizing:border-box;
+}
+
+.upload-form button{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#110702;
+    color:#F3E9DC;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.activity-card{
+    border:2px solid #110702;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+    text-align:center;
+    font-weight:bold;
+}
 </style>
 </head>
 
 <body>
-     <h1> QUIZZES</h1>
 
-     <div class="photo-row">
-        <div class="photo-box">
-           <img src="Quiz 1.jfif" alt="Quiz 1">
-        </div>
-        <div class="photo-box">
-            <img src="Quiz 2.jfif" alt="Quiz 2">
-        </div>
-        <div class="photo-box">
-            <img src="Quiz 3.jfif" alt="Quiz 3">
-        </div>
-        <div class="photo-box">
-            <img src="Long Quiz.png" alt="Long Quiz">
-        </div>
-        <div class="photo-box"> 
-            <img src="Carousel.jfif" alt="Carousel">
-        </div>
-       </div> 
-       
-        <a href="index.html"> ⬅ Back to Portfolio </a>
-        
-        <div class="overlay" id="overlay">
-        <img id="overlayImg" src="">
-        <h2 id="overlayTitle"></h2>
-        </div>
+<h1>QUIZZES</h1>
 
-    <script>
-        const images = document.querySelectorAll(".photo-box img");
-        const overlay = document.getElementById("overlay");
-        const overlayImg = document.getElementById("overlayImg");
-        const overlayTitle = document.getElementById("overlayTitle");
+<!-- Upload Section -->
+<div class="upload-container">
 
-        let isOpen = false; 
+    <div class="upload-form">
+        <h2>Activity Upload File</h2>
 
-        images.forEach(img => {
-        img.addEventListener("click", () => {
+        <label>File Name</label>
+        <input type="text" id="fileName" placeholder="Enter your File Name">
+
+        <label>Upload File</label>
+        <input type="file" id="fileUpload">
+
+        <label>Upload Image</label>
+        <input type="file" id="imageUpload" accept="image/*">
+
+        <button onclick="uploadActivity()">Submit</button>
+    </div>
+
+    <div class="uploaded-section">
+        <h2>Uploaded Activity</h2>
+        <div id="activityList"></div>
+    </div>
+
+</div>
+
+<!-- Existing Quiz Gallery -->
+<div class="photo-row">
+    <div class="photo-box">
+        <img src="Images/Quiz 1.jfif" alt="Quiz 1">
+    </div>
+
+    <div class="photo-box">
+        <img src="Images/Quiz 2.jfif" alt="Quiz 2">
+    </div>
+
+    <div class="photo-box">
+        <img src="Images/Quiz 3.jfif" alt="Quiz 3">
+    </div>
+
+    <div class="photo-box">
+        <img src="Images/Long Quiz.png" alt="Long Quiz">
+    </div>
+
+    <div class="photo-box">
+        <img src="Images/Carousel.jfif" alt="Carousel">
+    </div>
+</div>
+
+<a href="index.html">⬅ Back to Portfolio</a>
+
+<div class="overlay" id="overlay">
+    <img id="overlayImg" src="">
+    <h2 id="overlayTitle"></h2>
+</div>
+
+<script>
+
+let activityCount = 0;
+
+function uploadActivity() {
+
+    const fileName = document.getElementById("fileName").value;
+
+    if (fileName.trim() === "") {
+        alert("Please enter a file name.");
+        return;
+    }
+
+    activityCount++;
+
+    const activityCard = document.createElement("div");
+    activityCard.classList.add("activity-card");
+
+    activityCard.innerHTML =
+        "<strong>Activity #" + activityCount + "</strong><br>" +
+        fileName;
+
+    document.getElementById("activityList")
+            .appendChild(activityCard);
+
+    document.getElementById("fileName").value = "";
+    document.getElementById("fileUpload").value = "";
+    document.getElementById("imageUpload").value = "";
+}
+
+const images = document.querySelectorAll(".photo-box img");
+const overlay = document.getElementById("overlay");
+const overlayImg = document.getElementById("overlayImg");
+const overlayTitle = document.getElementById("overlayTitle");
+
+let isOpen = false;
+
+images.forEach(img => {
+    img.addEventListener("click", () => {
         if (!isOpen) {
-        overlay.classList.add("active");
-        overlayImg.src = img.src;
-        overlayTitle.textContent = img.alt; 
-        isOpen = true;
-      }
-  });
+            overlay.classList.add("active");
+            overlayImg.src = img.src;
+            overlayTitle.textContent = img.alt;
+            isOpen = true;
+        }
+    });
 });
 
-        overlay.addEventListener("click", () => {
-        overlay.classList.remove("active");
-        isOpen = false;
+overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+    isOpen = false;
 });
-    </script> 
+
+</script>
+
 </body>
 </html>
